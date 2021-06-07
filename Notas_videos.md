@@ -216,15 +216,117 @@ Debemos hacer una configuraciones los siguientes archivos:
         **/
         protected $namespace = 'App\\Http\\Controllers';
     </pre>
-
-
 ### ***Algunos conceptos***
 1. #### NameSpace
     Espacio de nombres, en realidad es el path donde esta ubicado mi archivo controlador.
 2. #### __invoke()
     Esta funcion es declarada en los controlladores que manejan una unica vista, como ser _HomeController_.
 
-
-
 ***### < Video3: Controladores***
+---
+
+***### < Video4: Vistas***
+---
+### ***Vistas***
+Las vistas son contenido html que van a mostrar los datos que son enviados por el controlador.
+Cada metodo de controlador va a tener una vista asociada.
+#### Alojamiento de vistas
+Los archivos de vistas se guardan en el directorio *app/resourses/*__views__.
+Para mejor organizacion, por cada controlador que meneje mas de un metodo, se podra crear un directorio dentro de **views** que agrupe todas sus vistas.
+    <pre>
+        resources/views/
+        ├── cursos
+        │   ├── create.blade.php
+        │   ├── index.blade.php
+        │   └── show.blade.php
+        ├── home.blade.php
+    </pre>
+#### Llamar una vista
+Para acceder a una vista desde un controlador debemos llamarlo con ***view('nombre_vista')**
+##### Metodo view('')
+Este metodo nos ubica en el directorio **views**, donde se alojan las vistas, luego debemos indicarle el path de la plantilla que necesitamos acceder.
+    <pre>
+        <?php
+            namespace App\Http\Controllers;
+            use Illuminate\Http\Request;
+            class HomeController extends Controller
+            {
+                public function __invoke()
+                {
+                    return view('home');
+                }
+            }
+    </pre>
+##### Pasando Variables a la vista
+Para pasar variables desde el controlador a la vista lo hacemos desde la invocacion de **view** en forma de _array_
+    <pre>
+        public function show(_$lenguaje_){
+            return view('cursos.show', **['lenguaje'=>$lenguaje]**);
+        }
+    </pre>
+###### Pasando Variables con compact('')
+Para generar un array con el mismo nombre de la variable podemos usar ***compact('nombre')***. Este devuelve un _array_ de tipo **['nombre'=>'$nombre']**
+    <pre>
+        public function show(_$lenguaje_){
+            return view('cursos.show', **compact**('lenguaje');
+        }
+    </pre>
+
+### ***Blade***
+Es un motor de plantillas, que nos permite reutilizar codigo html.
+#### Creando Plantillas
+Las plantillas de _blade_ se alojan dentro del directorio _app/resourses/views/_***layouts***
+Todas las plantillas y formularios de vistas deben llevar la extension **blade** para que este motor lo reconozca. 
+Para eso agregamos al nombre del archivos la extension **.blade**.
+> nombre.blade.php
+    <pre>
+       resources/views/
+        ├── cursos
+        │   ├── create.blade.php
+        │   ├── index.blade.php
+        │   └── show.blade.php
+        ├── home.blade.php    
+    </pre>
+
+#### Definiendo contenido dinamico
+Para crear una plantilla debemos crear el arhivo que contendra el codigo a reutilizar.
+En los campos dinamicos los definiremos con una etiqueda **@yield('nombre')**
+    <pre>
+        app/resourses/views/layouts/plantilla.blade.php
+        <br>
+        \<!DOCTYPE html>
+            \<html lang="en">
+            \<head>
+                \<meta charset="UTF-8">
+                \<meta http-equiv="X-UA-Compatible" content="IE=edge">
+                \<meta name="viewport" content="width=device-width, initial-scale=1.0">
+                \<title>@yield('title')\</title>
+            \</head>
+            \<body>
+                    @yield('contenido')
+            \</body>
+            \</html>
+    </pre>
+
+#### Heredando contenido
+Para extender una plantilla, usaremos la notacion blade **@extends('directorio.nombreplantilla')**
+    <pre>
+        app/resourses/views/home.blade.php
+        <h5>
+        @extends('layouts.plantillas')
+        ... # ...
+    </pre>
+#### Agregando contenido dinamico
+Luego de Heredar el contenido de la plantilla, para agregar el contenido con la notacon **@section('nombre', 'contenidoDinamico')** 
+    <pre>
+        app/resourses/views/home.blade.php
+        <h5>
+        ... # ...
+        @section('title', 'Cursos - Index')
+        @section('contenido')
+            \<h1>Bienvenido a cursos index\</h1>
+        @endsection</h5>
+    </pre>
+
+***### < Video4: Vistas***
 ---
