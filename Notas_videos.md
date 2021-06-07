@@ -11,7 +11,6 @@
 ---
 ***### < Video1: presentacion***
 ---
-
 ***### > Video2: Rutas***
 ---
 ### ***From Controller***
@@ -71,4 +70,161 @@ Tener en cuenta *inicializar* la una de las variables en *null* **(function(*$va
     </pre>
 
 ***### < Video2: Rutas***
+---
+***### > Video3: Controladores***
+---
+### ***Como Crear un Controlador***
+#### Donde creo mis controladores
+Los controladores se crean dentro del directorio _/app/Http/_***Controllers***
+#### Como Creo los controladores
+Debo estar dentro del directorio de mi proyecto.
+Luego utilizo el asistente de consola, y ejecuto el siguiente comando:
+    <pre>
+        php artisan make:controller NombreController
+    </pre>
+**Nota:** Por convesion todos los controladores al final de su nombre llevan la palabra ***Controller***.
+
+### ***Como asignar una ruta a un Controlador***
+Esto varia para ***laravel 8*** con respecto a sus versiones anteriores..  
+#### Asignacion de rutas en Laravel 8
+##### Controlador para Una ruta
+
+1. **Antes**
+
+    En el Controlador HomeController:
+        <pre>
+            <?php
+                namespace App\Http\Controllers;
+                use Illuminate\Http\Request;
+                class HomeController extends Controller
+                {
+                    //
+                }
+        </pre>
+
+    Archivo de rutas web.php
+        <pre>
+            <?php
+                use Illuminate\Support\Facades\Route;
+                Route::get('/', function () {
+                    return "video 2 del curso laravel";
+                });
+        </pre>
+2. **Despues**
+
+    En el Controlador:
+    > Debemos implementar la funcion que va a devolver los datos a la vista
+        <pre>
+            <?php
+                namespace App\Http\Controllers;
+                use Illuminate\Http\Request;
+                class HomeController extends Controller
+                {
+                    public function __invoke(){
+                        return "video 2 del curso laravel";
+                    }
+                }
+        </pre>
+
+    Archivo de rutas web.php
+    > Para poder usar nuestro controlador Home, debemos declararlo usan *use* y su namespace
+    
+    > Luego Instanciarlo en la ruta *HomeController::class*
+        <pre>
+            <?php
+                use Illuminate\Support\Facades\Route;
+                use App\Http\Controllers\HomeController;
+                Route::get('/',  HomeController::class);
+        </pre>
+##### Controlador para una msima ruta y distintas vistas
+Controlador para manejar las distintas vistas de una misma ruta:
+
+1.**Antes**
+    Rutas web.php
+        <pre>
+        <?php
+            use App\Http\Controllers\HomeController;
+            use Illuminate\Support\Facades\Route;
+            Route::get('curso', function() {
+                return "video 2 del curso laravel";
+            });
+            Route::get('curso/crear', function() {
+                 return "Aqui vamos a crear un curso";
+            });
+            Route::get('curso/{lenguaje}/{so?}', function($lenguaje, $so = null) {
+                if($so){
+                    return "bienvenido al curso de $lenguaje en so $so";
+                }else{
+                    return "bienvenido al curso de $lenguaje";
+                }
+            });
+        </pre>
+    Controlador CursoController.php
+        <pre>
+        <?php
+            namespace App\Http\Controllers;
+            use Illuminate\Http\Request;
+            class CursoController extends Controller
+            {
+                //
+            }
+        </pre>
+2.**Despues**
+    Rutas web.php
+        <pre>
+        <?php
+                ... # ...
+            Route::get('curso', [CursoController::class, 'index']);
+            Route::get('curso/crear', [CursoController::class, 'createCurso']);
+            Route::get('curso/{lengauaje}', [CursoController::class, 'show']);
+        </pre>
+    Controlador HomeController.php
+        <pre>
+        <?php
+            namespace App\Http\Controllers;
+            use Illuminate\Http\Request;
+            class CursoController extends Controller
+            {
+                public function index(){
+                    return "index";
+                }
+                public function createCurso(){
+                    return "aqui puedes crear un curso";
+                }
+                public function show($lenguaje){
+                    return "bienvenido al curso de $lenguaje";
+                }
+        </pre>
+#### Controladores en versiones anteriores a laravel 8
+Debemos hacer una configuraciones los siguientes archivos:
+    <pre>
+        web.php
+            <?php
+                    ... # ...
+                Route::get('curso', 'CursoController@index');
+                    ... # ...
+        CursoController.php
+            <?php
+                    ... # ...
+                public function index(){
+                    return "index";
+                }
+                    ... # ...
+        app/Http/Providers/RouteServiceProviders.php
+        /**
+         * Descomentar esta variable
+        **/
+        protected $namespace = 'App\\Http\\Controllers';
+    </pre>
+
+
+### ***Algunos conceptos***
+1. #### NameSpace
+    Espacio de nombres, en realidad es el path donde esta ubicado mi archivo controlador.
+2. #### __invoke()
+    Esta funcion es declarada en los controlladores que manejan una unica vista, como ser _HomeController_.
+
+
+
+***### < Video3: Controladores***
 ---

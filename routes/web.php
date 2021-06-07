@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CursoController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,27 +15,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    // return view('welcome');
-    return "video 2 del curso laravel";
-});
+Route::get('/', HomeController::class);
 
-Route::get('curso', function() {
-    return "video 2 del curso laravel";
-});
+Route::get('curso', [CursoController::class, 'index']);
 
-// Route::get('curso/{lengauaje}', function($lenguaje) {
-//     return "bienvenido al curso de $lenguaje";
+Route::get('curso/crear', [CursoController::class, 'createCurso']);
+
+Route::get('curso/{lengauaje}', [CursoController::class, 'show']);
+
+// Route::get('curso/{lenguaje}/{so?}', function($lenguaje, $so = null) {
+//     if($so){
+//         return "bienvenido al curso de $lenguaje en so $so";
+//     }else{
+//         return "bienvenido al curso de $lenguaje";
+//     }
 // });
-
-// Route::get('curso/{lenguaje}/{so}', function($lenguaje, $so) {
-//     return "bienvenido al curso de $lenguaje en so $so";
-// });
-
-Route::get('curso/{lenguaje}/{so?}', function($lenguaje, $so = null) {
-    if($so){
-        return "bienvenido al curso de $lenguaje en so $so";
-    }else{
-        return "bienvenido al curso de $lenguaje";
-    }
-});
