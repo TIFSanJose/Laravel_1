@@ -4,9 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cursos Index</title>
+    <title>@yield('title')</title>
+    {{-- favicon --}}
+    {{-- estilos --}}
 </head>
 <body>
-    <h1>Bienvenido a cursos index</h1>
+    {{-- nav --}}
+    {{-- body --}}
+        
+        @yield('contenido')
+        
+    {{-- footer --}}
+    {{-- script --}}
 </body>
 </html>
