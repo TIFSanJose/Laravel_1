@@ -225,7 +225,7 @@ Debemos hacer una configuraciones los siguientes archivos:
 ***### < Video3: Controladores***
 ---
 
-***### < Video4: Vistas***
+***### > Video4: Vistas***
 ---
 ### ***Vistas***
 Las vistas son contenido html que van a mostrar los datos que son enviados por el controlador.
@@ -339,4 +339,29 @@ Luego de esto, pasamos a configurar la conexion, y esto lo hacemos en el archivo
 #### Variables de Entorno .env
 Los datos necesarios para la conexion los debedos setear en el archivo ***.env**
 ***### < Video5: DB conexion***
+
+***### > Video6: Migraciones***
+---
+### ***Que son las Migraciones***
+Son un control de versiones de los cambios realizados sobre la BD. 
+Permite volver a un estado anterior de la BD.
+#### Directorio de Migraciones
+Cada migracion genera un archivo php, _migracion.php_, los que se guardan en el directorio _app/database/_***migrations***.
+#### Metodos de una Migracion
+Las migraciones son clases que extienden a _Migration_, _class NewMigration extends **Migration**_.
+Cada clase migracion se compone de dos metodos: ***up()*** y ***down()***, tal como indica su nombre crean y borran los cambios que generan.
+#### Realizando una Migracion
+Para ejecutar las migraciones, dentro de la consola, ejecutamos el siguiente comando:
+    <pre>
+        php artisan migrate
+    </pre>
+Este proceso recorre todos los archivos de migraciones ejecutando los metodos **up()**.
+#### Tabla Migraciones
+Con la primera migracion ejecutada, ademas de los cambios que realizan los metodos _up()_ sobre la BD, tambien _se crea la tabla_ ***migraciones*** donde se guarda el registro de las migraciones ejecutadas.
+Las migraciones ejecutadas se agrupan por _lotes_.
+#### Lotes
+Los lotes son grupos de migraciones que se realizaron en una misma ejecucion.
+Estos lotes se diferencian en la columna ***batch*** de la tabla _migraciones_.
+
+***### < Video6: Migraciones***
 ---
