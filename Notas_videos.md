@@ -330,3 +330,13 @@ Luego de Heredar el contenido de la plantilla, para agregar el contenido con la 
 
 ***### < Video4: Vistas***
 ---
+***### < Video5: DB conexion***
+---
+### ***Creando conexion***
+Laravel soporta conexiones con 4 BD (ver documentacion).
+Para crear una conexion, previamente debemos tener la BD creada.
+Luego de esto, pasamos a configurar la conexion, y esto lo hacemos en el archivo ***database.php***, que se encuentra en _app/config/database.php_.
+#### Variables de Entorno .env
+Los datos necesarios para la conexion los debedos setear en el archivo ***.env**
+***### < Video5: DB conexion***
+---
