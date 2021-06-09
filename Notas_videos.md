@@ -364,4 +364,72 @@ Los lotes son grupos de migraciones que se realizaron en una misma ejecucion.
 Estos lotes se diferencian en la columna ***batch*** de la tabla _migraciones_.
 
 ***### < Video6: Migraciones***
+
+***### > Video7: Migraciones - RollBack***
+---
+### ***Titulo2***
+#### Subtitulo1
+##### Subtitulo2
+
+### ***Creando Migraciones***
+Puedo crear una migracion con el siguente comando:
+    <pre>
+        php artisan make:migration miMigracion
+    </pre>
+Esto me genera un archivo de en el directorio de migraciones con nombre _miMigracion.php_.
+Esta clase tendra los metodos _up()_ y _down()_ vacios.
+#### Editando Mi Migracion
+##### Creando Tabla - up()
+Para crear debo editar el metodo _up()_
+Para crear tabla, hago uso de la clase ***Schema*** y su metodo ***create('nombreTabla', /* */)***
+    <pre>
+        function up(){
+            **Schema::create('nombreTabla'**, //Columnas){
+                //
+            }
+        }
+    </pre>
+##### Creando Columna - up()
+Al igual que lo anterior, y continuando en la funcion _create()_.
+Hago uso de una funcion a la que le paso el parametro una instancia ***Blueprint***_$variable_.
+    <pre>
+        function up(){
+            Schema::create('nombreTabla', function(**Blueprint $variable**){
+                $variable->id();
+                $variable->string('name')
+                $variable->text('direccion')
+            })
+        }
+    </pre>
+##### Borrando tabla - down()
+El borrado de tabla, corresponde a la funcion _down()_
+    <pre>
+        public function down(){
+            Schema::dropIfExists('nombreTabla')
+        }
+    </pre>
+### Revertir cambios - rollback
+Los cambios se revierten por _lotes_, del mas reciente al mas antiguo.
+    <pre>
+        php artisan migrate:rollback
+    </pre>
+#### Eliminando archivos de migracion
+Para poder eliminar archivos de migracion en el proyecto, debo asegurarme que no haya registro en la tabla **migrations** de la DB de la migracion a eliminar.
+En el caso de haber registro, se ejecuto esa migracion, debo _realizar un rollback_ hasta eliminarlo de la DB, luego de eso elimino el archivo.
+### Creando Migraciones segun convecion
+Laravel nos sugiere crear migraciones con la siguiente convencion **create** ***\_nombre\_*** **tabla**.
+    <pre>
+        php artisan make:migration **create** ***\_nombre\_*** **tabla**
+    </pre>
+Esto nos crea una migracion con los metodos _up()_ y _down()_ pre editados.
+### Agegando nuevas columnas
+Se pueden agregar nuevas columnas a una tabla creada por migraciones.
+Para eso se edita el metodo _up()_ de la migracion deseada y luego se ejcuta el comando **migrate:fresh**
+    <pre>
+        php artisan ***migrate:fresh***
+    </pre>
+Lo que hace este proceso, es recorrer todos los archivos de migraciones ejecutando los metodos **down()** y luego **up()**.
+En esa destruccion y recontruccion de las tablas ***se pierden los datos existentes***.
+
+***### < Video7: Migraciones - RollBack***
 ---
