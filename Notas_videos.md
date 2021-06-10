@@ -367,10 +367,6 @@ Estos lotes se diferencian en la columna ***batch*** de la tabla _migraciones_.
 
 ***### > Video7: Migraciones - RollBack***
 ---
-### ***Titulo2***
-#### Subtitulo1
-##### Subtitulo2
-
 ### ***Creando Migraciones***
 Puedo crear una migracion con el siguente comando:
     <pre>
