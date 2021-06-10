@@ -429,3 +429,87 @@ En esa destruccion y recontruccion de las tablas ***se pierden los datos existen
 
 ***### < Video7: Migraciones - RollBack***
 ---
+
+***### > Video8: ***
+---
+***### < Video8: ***
+---
+
+***### > Video9: ORM***
+---
+### ***Titulo2***
+#### Subtitulo1
+##### Subtitulo2
+### ***ORM Eloquent***
+Laravel8 usa como _orm_ a **eloquent**.
+El _orm_ permite tratar cada tabla como una clase, y cada registro como un objeto.
+### ***Modelo***
+El **Modelo** nos permite definir una _Clase_ para administrirar una _Tabla_ en la BD.
+El mapeo entre _Clase_ --> _Tabla_ se puede hacer con el uso de _convension_ o a mano.
+#### Creando Modelo
+    <pre>
+        php artisan _make_:**model Nombre**
+    </pre>
+##### Convencion
+El uso de la _convesion_ para crear un modelo nos facilita el reconocimiento para asociar un _modelo_ con su _tabla_.
+La _convesion_ trata en escribir el nombre del Modelo y luego Eloquent lo asocia con una tabla con el mismo nombre en plural:
+    <table>
+        <tr>
+            <td><h4>Modelo</h4></td>
+            <td><h4>Tabla</h4></td>
+        </tr>
+        <tr>
+            <td>User</td>
+            <td>users</td>
+        </tr>
+        <tr>
+            <td>Person</td>
+            <td>persons</td>
+        </tr>
+        <tr>
+            <td>Car</td>
+            <td>cars</td>
+        </tr>
+        <tr>
+            <td>Cuenta</td>
+            <td>cuentas</td>
+        </tr>
+    </table>
+##### Directorio de los Modelos
+Los modelos se guardan en app/app/**Models**
+##### Probando los Modelos - Tinker
+Para probar los modelos, usamos a [**tinker**](http://translate.google.com/translate?hl=en&sl=auto&tl=es&u=https%3A%2F%2Flaravel.com%2Fdocs%2F8.x%2Fmigrations&sandbox=1), nos permite interactuar con la app laravel desde la _cli_
+<pre>
+    php artisan trinker
+
+    // use Name\Space\Modelo;
+    use App\Models\Curso;
+
+    // creo una instancia del Modelo
+    $curso = new Curso();
+
+    // seteo valores
+    $curso->name='nombrecurso';
+
+    $curso->descripcion='curso de prueba';
+
+    // guardo en la BD
+    $curso->save();
+    
+    //salgo de trinker
+    exit
+</pre>
+##### Asignar un Modelo a Una tabla
+Si es mi eleccion puedo asingar un modelo a una tabla manualmente.
+En el modelo seleccionado debo definir la variable _$table_ y asinarle el valor _nombre de la tabla_ que quiero administrar.
+    <pre>
+        ... # ...
+        class Curso extends Model{
+            ... # ... 
+            protected **$table** = **'usuario'**
+            ... # ...
+        }
+    </pre>
+
+***### < Video9: ORM***
+---
