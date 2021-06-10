@@ -428,19 +428,33 @@ Lo que hace este proceso, es recorrer todos los archivos de migraciones ejecutan
 En esa destruccion y recontruccion de las tablas ***se pierden los datos existentes***.
 
 ***### < Video7: Migraciones - RollBack***
----
 
-***### > Video8: ***
 ---
-***### < Video8: ***
+***### > Video8: Migraciones - Update sin perder datos***
 ---
+### ***Realizar Actualizaciones sin perder datos***
+Modifcar la tabla, columnas y propiedades sin perder datos.
+#### Diferencia ente Fresh y REfresh
+**fresh**: elimina todas las tablas, luego ejecuta todos los metodos _up()_ de cada migracion.
+**refresh**: recorre uno a uno las migraciones ejecutando _down()_ luego el _up()_.
+#### Update de Tablas
+Para la modificacion de tablas usaremos el metodo **table** de la clase _Schema_.
+    <pre>
+        Schema::**table**('nombretable', function(Blueprint){
+            //
+        })
+    </pre>
+##### Tablas
+Podemos hacer varios cambios, seguir en documentacion. [link](https://laravel-com.translate.goog/docs/8.x/migrations?_x_tr_sl=auto&_x_tr_tl=es&_x_tr_hl=en&_x_tr_pto=ajax#tables)
+##### Columnas
+Podemos hacer varios cambios, seguir en documentacion. [link](https://laravel-com.translate.goog/docs/8.x/migrations?_x_tr_sl=auto&_x_tr_tl=es&_x_tr_hl=en&_x_tr_pto=ajax#columns)
+##### Propiedades
+[link](https://laravel-com.translate.goog/docs/8.x/migrations?_x_tr_sl=auto&_x_tr_tl=es&_x_tr_hl=en&_x_tr_pto=ajax#columns)
 
+***### < Video8: Migraciones - Update sin perder datos***
+---
 ***### > Video9: ORM***
 ---
-### ***Titulo2***
-#### Subtitulo1
-##### Subtitulo2
-### ***ORM Eloquent***
 Laravel8 usa como _orm_ a **eloquent**.
 El _orm_ permite tratar cada tabla como una clase, y cada registro como un objeto.
 ### ***Modelo***
