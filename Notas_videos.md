@@ -527,3 +527,37 @@ En el modelo seleccionado debo definir la variable _$table_ y asinarle el valor 
 
 ***### < Video9: ORM***
 ---
+***### < Video10: Seeders***
+---
+### ***Seeders***
+Los seeders nos permiten cargar datos de forma masiva.
+#### DB Seeders
+El archivo **DatabaseSeeder.php** se encuentra en el directorio _app/database/seeders_.
+Podemos cargar datos desde este archivo. Pero en grandes cantidades no es recomendable.
+Para cargar datos, dentro del archivo uso la misma sintaxis usada en tinker.
+    <pre>
+        php artisan migrate:**fresh**
+        //
+        php artisan **db:seed**
+    </pre>
+#### Clases Seeders
+Para cargar datos de grupos distintos, entidades distintas, se sugiere agruparlos en archivos separados.
+Para eso podemos crear nuestro seeders.
+#### Usando Seeders
+##### Creando Seeders Clase
+    <pre>
+        php artisan make:seeder NombreSeeder
+    </pre>
+##### Vinculando DBseeder --> ClassSeeder
+Edito DBseeder
+    <pre>
+        $this->call('ClassSeeder::Class')
+    </pre>
+En la consola ejecuto
+    <pre>
+        php artisan migrate:fresh --seed
+    </pre>
+
+***### > Video10: Seeders***
+---
+
