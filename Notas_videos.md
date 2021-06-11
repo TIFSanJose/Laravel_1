@@ -527,7 +527,7 @@ En el modelo seleccionado debo definir la variable _$table_ y asinarle el valor 
 
 ***### < Video9: ORM***
 ---
-***### < Video10: Seeders***
+***### > Video10: Seeders***
 ---
 ### ***Seeders***
 Los seeders nos permiten cargar datos de forma masiva.
@@ -558,6 +558,50 @@ En la consola ejecuto
         php artisan migrate:fresh --seed
     </pre>
 
-***### > Video10: Seeders***
+***### < Video10: Seeders***
 ---
+***### > Video11: Factory***
+---
+### ***Factory, Que son?***
+Son fabricas, que nos perminten automatizar la carga de datos de prueba en la BD.
+Esto facilita la carga de registro en la cantidad que deseemos.
+#### Creando Factory
+Para la cracion de Factory usaremos el comando _php artisan_ **make:factory** NombreFactory
+1. ##### Factory Generico
+Podemos crear un Factory generico con el comando:
+    <pre>
+        _php artisan_ **make:factory** NombreFactory
+    </pre>
+Este archivo lo tenemos que editar, ajustandolo a la tabla que queremos cargar.
+2. ##### Factory para un modelo determinado
+Creamos un factory asociado al modelo que queremos administrar.
+    <pre>
+        _php artisan_ **make:factory** NombreFactory **--model=** nombreModelo
+    </pre>
+#### Creando Datos
+1. ##### Editando Factory
+    <pre>
+        return [
+            'name'=>$this->faker-> // 
+        ]
+    </pre>
+    Dentro del Modelofactory puedo instanciar los metodos de la calse Factory como son _fake_ y sus metodos. 
+2. ##### Editando CursoSeeder
+    <pre>
+        Modelo::factory(50)->crate();
+    </pre>
+    Desde el seeder, llamo a la fabrica del modelo.
+3. ##### Ejecutando la carga de datos
+    <pre>
+        php artisan _make:fresh --seed_
+    </pre>
+4. ##### Refactorizando
+Se puede llamar a la fabrica desde _databaseseeder.php_.
+Para eso editamos el ese archivo llamando a la fabrica que queremos cargar.
+    <pre>
+        Modelo1::factory(50)->crate();
+        Modelo2::factory(30)->crate();
+    </pre>
 
+***### < Video11: Factory***
+---
