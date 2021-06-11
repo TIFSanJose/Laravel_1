@@ -22,7 +22,9 @@ class CursoFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name'=>$this->faker->sentence(), 
+            'avatar'=>$this->faker->sentence(), 
+            'descripcion'=>$this->faker->paragraph() 
         ];
     }
 }

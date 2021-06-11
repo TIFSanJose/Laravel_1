@@ -18,7 +18,7 @@ class CreateCursoTable extends Migration
             $table->timestamps();
             $table->string('name');
             $table->text('descripcion');
-            $table->boolean('Sexo');
+            // $table->boolean('Sexo');
         });
     }
 
