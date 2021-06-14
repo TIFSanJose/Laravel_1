@@ -605,3 +605,23 @@ Para eso editamos el ese archivo llamando a la fabrica que queremos cargar.
 
 ***### < Video11: Factory***
 ---
+
+***### > Video12: Consultas Eloquent***
+---
+Las consultas se pueden seguir de la documentacion de laravel:
+1. [construyendo consultas](https://laravel.com/docs/8.x/queries#ordering-grouping-limit-and-offset)
+2. [colecciones eloquent](https://laravel.com/docs/8.x/eloquent-collections)
+3. [colecciones](https://laravel.com/docs/8.x/collections)
+Como se ve, se trata de manejo de colecciones.
+Es un **tema importante** ya que tiene grandes apartados en temas distintos.
+#### Ejemplos del video.
+    <pre>
+        use App\Models\Curso
+//
+        $cursos = Curso::**all()**
+//
+        where, orderBy, first, select, alias, take, find, consultas complejas (where)
+    </pre>
+
+***### < Video12: Consultas Eloquent***
+---
