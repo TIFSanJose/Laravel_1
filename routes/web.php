@@ -17,11 +17,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class);
 
-Route::get('curso', [CursoController::class, 'index']);
+Route::get('curso', [CursoController::class, 'index'])->name('curso.index');
 
-Route::get('curso/crear', [CursoController::class, 'createCurso']);
+Route::get('curso/crear', [CursoController::class, 'createCurso'])->name('curso.crear');
 
-Route::get('curso/{lengauaje}', [CursoController::class, 'show']);
+Route::get('curso/{id}', [CursoController::class, 'show'])->name('curso.show');
 
 // Route::get('curso/{lenguaje}/{so?}', function($lenguaje, $so = null) {
 //     if($so){
