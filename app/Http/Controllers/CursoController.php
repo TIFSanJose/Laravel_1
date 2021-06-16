@@ -2,19 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Curso;
 use Illuminate\Http\Request;
 
 class CursoController extends Controller
 {
     public function index(){
-        return view('cursos.index');
+        // $cursos=Curso::select('id', 'name', 'category')->get();
+        $cursos=Curso::paginate();
+        return view('cursos.index', compact('cursos'));
     }
 
     public function createCurso(){
         return view('cursos.create');
     }
 
-    public function show($lenguaje){
+    public function show($id){
+
+        $curso = Curso::find($id);
         /**
          * Para pasar variables a la vista se hace por un array 
          * ['nombreVariable_recibeLaVista'=>$nombreVariable_EstoyPasando]
@@ -24,6 +29,6 @@ class CursoController extends Controller
          * un array ['nombre'=>$nombre]
          */
         // return view('cursos.show', ['lenguaje'=>$lenguaje]);
-        return view('cursos.show', compact('lenguaje'));
+        return view('cursos.show', compact('curso'));
     }
 }
