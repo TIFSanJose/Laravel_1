@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\HomeController;
+use App\Models\Curso;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,10 +17,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', HomeController::class);
-
+//   Metodo - url       controlador  -   Metodo Controlador - nombre Url
 Route::get('curso', [CursoController::class, 'index'])->name('curso.index');
 
 Route::get('curso/crear', [CursoController::class, 'createCurso'])->name('curso.crear');
+
+Route::post('curso', [CursoController::class, 'store'])->name('curso.store');
 
 Route::get('curso/{id}', [CursoController::class, 'show'])->name('curso.show');
 
