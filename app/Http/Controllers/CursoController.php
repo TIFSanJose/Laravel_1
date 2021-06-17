@@ -27,6 +27,15 @@ class CursoController extends Controller
         return redirect()->route('curso.show', $curso);
     }
 
+    public function update(Request $request, Curso $curso){
+        $curso->name=$request->nombre;        
+        $curso->category=$request->categoria;        
+        $curso->descripcion=$request->descripcion;   
+        
+        $curso->save();
+        return redirect()->route('curso.show', $curso);
+    }
+
     public function show($id){
 
         $curso = Curso::find($id);
@@ -40,5 +49,9 @@ class CursoController extends Controller
          */
         // return view('cursos.show', ['lenguaje'=>$lenguaje]);
         return view('cursos.show', compact('curso'));
+    }
+
+    public function edit(Curso $curso){
+        return view('cursos.edit', compact('curso'));
     }
 }

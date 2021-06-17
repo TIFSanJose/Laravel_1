@@ -24,7 +24,11 @@ Route::get('curso/crear', [CursoController::class, 'createCurso'])->name('curso.
 
 Route::post('curso', [CursoController::class, 'store'])->name('curso.store');
 
+Route::put('curso/{curso}', [CursoController::class, 'update'])->name('curso.update');
+
 Route::get('curso/{id}', [CursoController::class, 'show'])->name('curso.show');
+
+Route::get('curso/{curso}/edit', [CursoController::class, 'edit'])->name('curso.edit');
 
 // Route::get('curso/{lenguaje}/{so?}', function($lenguaje, $so = null) {
 //     if($so){
