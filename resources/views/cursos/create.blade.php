@@ -11,20 +11,38 @@
         <label for="">
             Nombre:
             <br>
-            <input type="text" name="nombre">
+            <input type="text" name="nombre" value="{{ old('nombre') }}">
         </label>
+
+        <br>
+        @error('nombre')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+
         <br>
         <label for="">
             Categoria:
             <br> 
-            <input type="text" name="categoria">
+            <input type="text" name="categoria" value="{{ old('categoria') }}">
         </label>
+
+        <br>
+        @error('categoria')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+
         <br>
         <label for="">
             Descripcion:
             <br>
-            <textarea name="descripcion" cols="30" rows="10"></textarea>
+            <textarea name="descripcion" cols="30" rows="10" >{{ old('descripcion') }}</textarea>
         </label>
+
+        <br>
+        @error('descripcion')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+
         <br>
         <button type="submit">Enviar</button>
     </form>
