@@ -625,3 +625,116 @@ Es un **tema importante** ya que tiene grandes apartados en temas distintos.
 
 ***### < Video12: Consultas Eloquent***
 ---
+***### > Video14: Validaciones***
+---
+### ***Validacion de Campos***
+Las validaciones se pueden realizar con el metodo **validate()**.
+[Validaciones](https://laravel.com/docs/8.x/validation)
+#### Metodo Validate()
+Para hacer validaciones de datos antes mandarlos a la BD podemos usar el metodo **validate()**.
+> Dentro del controlador
+    <pre>
+        $objeto->validate([
+            'nombre_atributo' => 'tipo_validacion'
+        ]);
+    </pre>
+    <pre>
+        $objeto->validate([
+            'atributo_1' => 'required',
+            'atributo_2' => 'required',
+            'atributo_3' => 'required'
+        ]);
+    </pre>
+#### Validando sin perder datos.
+Esto se refiere al momento de editar un registro y al detectar un error la pagina se recarga eliminando los datos que se muestran.
+#### Metodo old()
+Para evitar los anterior podemos hacer uso del metodo **old()**.
+> Dentro de la vista html
+    <pre>
+        //
+        \<input name='nombreimput' _value={{ old('nombreimput')_ }}> \</input>
+    <pre>
+#### Metodo old() en formularios de edicion
+Para estos casos donde queremos que nos muestre los valores existentes en un campo y a su vez, si los modificamos no queremos que se pierdan al recargar; lo solucionamos pasando un parametro al metodo **old('nombrecampo', 'valorDefault')**.
+> Dentro de la vista html - ANTES -
+    <pre>
+            //
+        \<imput name='nombreimput' value={{ $objeto->atributo }}>\</imput>
+            //
+    </pre>
+> Dentro e la vista html - DESPUES -
+    <pre>
+            //
+        \<imput name='nombreimput' _value={{ old('nombreimput'**, $objeto->atributo**) }}_ >\</imput>
+            //
+    </pre>
+#### Agregando mas reglas de validacion.
+Es posible agregar mas reglas de validacion a un mismo campo.
+> Dentro del controlador
+    <pre>
+        $objeto->validate([
+            'atributo' => 'required | max:10 | unique'
+        ]);
+    </pre>
+Se recomienda, si las validaciones son muy grandes colocarlas en un archivo separado del controlador.
+### ***Mensajes de Error***
+Los msj de Error son lanzados al momento que se detecta un error en la validacion. 
+Para ello, la validacion y el msj error deben estar vinculados.
+Esta vinculacion se hace atraves del atributo del registro.
+#### Imprimiendo Mensaje de error
+Para la impresion de msj de error hacemos usos de la directiva _blade_ **@error('nombretaghtml')**
+> Dentro de la vista html
+    <pre>
+            //
+        \<imput name='**nombretaghtm**' value={{ old('**nombretaghtm**', $objeto->atributo) }} >\</imput>
+            //
+        **@error('_nombretaghtm_')**
+            {{ message }}
+        **@enderror**
+    </pre>
+#### Traduccion de Mensajes
+Por defecto los msj que se imprimen estan en ingles.
+Los archivos que contienen los mensajes se guardan en el directorio _MyProyect/resources/_**lang/**. Dentro de _lang_ estan los directorios con los idiomas:
+> Dentro de lang
+    <pre>
+        lang/
+        ├── en
+        │   ├── auth.php
+        │   ├── pagination.php
+        │   ├── passwords.php
+        │   └── validation.php
+        └── es
+            ├── auth.php
+            ├── pagination.php
+            ├── passwords.php
+            └── validation.php
+    </pre>
+##### Traduciendo Mensajes de error
+Para traducir los msj debemos traducir el contenido los archivos que contiene los directorio de idiomas.
+> En lang abro una terminal 
+    <pre>
+        $ pwd
+        MyProject/resources/lang
+    </pre>
+    <pre>
+        $ cp en/ ./es
+    </pre>
+    <pre>
+        $ ls 
+        en es
+    </pre>
+[Traducir](https://github.com/MarcoGomesr/laravel-validation-en-espanol) el contenido de estos archivos
+    <pre>
+        es/
+        ├── auth.php
+        ├── pagination.php
+        ├── passwords.php
+        └── validation.php
+    </pre>
+Luego de esto debemos indicarle a Laravel que tome los mensajes del idioma que queremos. 
+Para eso editamos la variable **'locale'** que se encuentra en el archivo _MyProject/config/_**app.php**
+    <pre>
+        'locale' => 'es'
+    </pre>
+
+***### < Video14: Validaciones***
