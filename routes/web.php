@@ -30,6 +30,9 @@ Route::get('curso/{id}', [CursoController::class, 'show'])->name('curso.show');
 
 Route::get('curso/{curso}/edit', [CursoController::class, 'edit'])->name('curso.edit');
 
+Route::delete('curso/{curso}', [CursoController::class, 'destroy'])->name('curso.destroy');
+
+
 // Route::get('curso/{lenguaje}/{so?}', function($lenguaje, $so = null) {
 //     if($so){
 //         return "bienvenido al curso de $lenguaje en so $so";
