@@ -39,19 +39,16 @@ class CursoController extends Controller
         return redirect()->route('curso.show', $curso);
     }
 
-    public function update(Request $request, Curso $curso){
-// Validacion
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'category' => 'required'
-        ]);
+    public function update(StoreCurso $request, Curso $curso){
 
-        $curso->name=$request->name;        
-        $curso->category=$request->category;        
-        $curso->description=$request->description;   
+        // $curso->name=$request->name;        
+        // $curso->category=$request->category;        
+        // $curso->description=$request->description;   
         
-        $curso->save();
+        // $curso->save();
+
+        $curso->update($request->all());
+
         return redirect()->route('curso.show', $curso);
     }
 
