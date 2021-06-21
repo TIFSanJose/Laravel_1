@@ -20,26 +20,36 @@ class CursoController extends Controller
 
     public function store(StoreCurso $request){
 
-        $curso=new Curso();
-        $curso->name=$request->nombre;
-        $curso->category=$request->categoria;
-        $curso->descripcion=$request->descripcion;
+        // $curso=new Curso();
+        // $curso->name=$request->nombre;
+        // $curso->category=$request->categoria;
+        // $curso->descripcion=$request->descripcion;
 
-        $curso->save();
+        // $curso->save();
+
+// Asignacion +iva uso del metodo Create
+        // $curso=Curso::create([
+        //     'name'=>$request->nombre,
+        //     'category'=>$request->categoria,
+        //     'descripcion'=>$request->descripcion
+        // ]);
+
+        $curso=Curso::create($request->all());
+
         return redirect()->route('curso.show', $curso);
     }
 
     public function update(Request $request, Curso $curso){
 // Validacion
         $request->validate([
-            'nombre' => 'required',
-            'descripcion' => 'required',
-            'categoria' => 'required'
+            'name' => 'required',
+            'description' => 'required',
+            'category' => 'required'
         ]);
 
-        $curso->name=$request->nombre;        
-        $curso->category=$request->categoria;        
-        $curso->descripcion=$request->descripcion;   
+        $curso->name=$request->name;        
+        $curso->category=$request->category;        
+        $curso->description=$request->description;   
         
         $curso->save();
         return redirect()->route('curso.show', $curso);

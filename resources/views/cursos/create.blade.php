@@ -11,11 +11,11 @@
         <label for="">
             Nombre:
             <br>
-            <input type="text" name="nombre" value="{{ old('nombre') }}">
+            <input type="text" name="name" value="{{ old('name') }}">
         </label>
 
         <br>
-        @error('nombre')
+        @error('name')
             <div class="alert alert-danger"><small>*{{ $message }}</small></div>
         @enderror
 
@@ -23,11 +23,11 @@
         <label for="">
             Categoria:
             <br> 
-            <input type="text" name="categoria" value="{{ old('categoria') }}">
+            <input type="text" name="category" value="{{ old('category') }}">
         </label>
 
         <br>
-        @error('categoria')
+        @error('category')
             <div class="alert alert-danger"><small>*{{ $message }}</small></div>
         @enderror
 
@@ -35,11 +35,11 @@
         <label for="">
             Descripcion:
             <br>
-            <textarea name="descripcion" cols="30" rows="10" >{{ old('descripcion') }}</textarea>
+            <textarea name="description" cols="30" rows="10" >{{ old('description') }}</textarea>
         </label>
 
         <br>
-        @error('descripcion')
+        @error('description')
             <div class="alert alert-danger"><small>*{{ $message }}</small></div>
         @enderror
 

@@ -26,23 +26,23 @@ class StoreCurso extends FormRequest
     {
         return [
             // Validaciones
-            'nombre' => 'required',
-            'descripcion' => 'required',
-            'categoria' => 'required'
+            'name' => 'required',
+            'description' => 'required',
+            'category' => 'required'
         ];
     }
 
     public function messages()
     {
         return [
-            'descripcion.required' => 'Debe ingresar una descripcion del curso'
+            'description.required' => 'Debe ingresar una descripcion del curso'
         ];
     }
 
     public function attributes()
     {
         return[
-            'nombre' => 'nombre del curso'
+            'name' => 'nombre del curso'
         ];
     }
 }
