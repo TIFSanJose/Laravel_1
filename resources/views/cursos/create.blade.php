@@ -16,7 +16,7 @@
 
         <br>
         @error('nombre')
-            <div class="alert alert-danger">{{ $message }}</div>
+            <div class="alert alert-danger"><small>*{{ $message }}</small></div>
         @enderror
 
         <br>
@@ -28,7 +28,7 @@
 
         <br>
         @error('categoria')
-            <div class="alert alert-danger">{{ $message }}</div>
+            <div class="alert alert-danger"><small>*{{ $message }}</small></div>
         @enderror
 
         <br>
@@ -40,7 +40,7 @@
 
         <br>
         @error('descripcion')
-            <div class="alert alert-danger">{{ $message }}</div>
+            <div class="alert alert-danger"><small>*{{ $message }}</small></div>
         @enderror
 
         <br>
