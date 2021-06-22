@@ -52,9 +52,9 @@ class CursoController extends Controller
         return redirect()->route('curso.show', $curso);
     }
 
-    public function show($curso){
+    public function show(Curso $curso){
 
-        $curso = Curso::find($curso);
+        // $curso = Curso::find($curso);
         /**
          * Para pasar variables a la vista se hace por un array 
          * ['nombreVariable_recibeLaVista'=>$nombreVariable_EstoyPasando]
