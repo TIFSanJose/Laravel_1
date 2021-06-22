@@ -16,21 +16,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', HomeController::class);
-//   Metodo - url       controlador  -   Metodo Controlador - nombre Url
-Route::get('curso', [CursoController::class, 'index'])->name('curso.index');
+// Route::get('/', HomeController::class);
+// //   Metodo - url       controlador  -   Metodo Controlador - nombre Url
+// Route::get('curso', [CursoController::class, 'index'])->name('curso.index');
 
-Route::get('curso/crear', [CursoController::class, 'createCurso'])->name('curso.crear');
+// Route::get('curso/crear', [CursoController::class, 'createCurso'])->name('curso.crear');
 
-Route::post('curso', [CursoController::class, 'store'])->name('curso.store');
+// Route::post('curso', [CursoController::class, 'store'])->name('curso.store');
 
-Route::put('curso/{curso}', [CursoController::class, 'update'])->name('curso.update');
+// Route::put('curso/{curso}', [CursoController::class, 'update'])->name('curso.update');
 
-Route::get('curso/{id}', [CursoController::class, 'show'])->name('curso.show');
+// Route::get('curso/{curso}', [CursoController::class, 'show'])->name('curso.show');
 
-Route::get('curso/{curso}/edit', [CursoController::class, 'edit'])->name('curso.edit');
+// Route::get('curso/{curso}/edit', [CursoController::class, 'edit'])->name('curso.edit');
 
-Route::delete('curso/{curso}', [CursoController::class, 'destroy'])->name('curso.destroy');
+// Route::delete('curso/{curso}', [CursoController::class, 'destroy'])->name('curso.destroy');
+
+
+// cambiar de url sin cambiar el nombre de rutas
+Route::resource('asignatura', CursoController::class)->parameters(['asignatura' => 'curso'])->names('curso');
+
 
 
 // Route::get('curso/{lenguaje}/{so?}', function($lenguaje, $so = null) {

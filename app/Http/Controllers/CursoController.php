@@ -14,7 +14,7 @@ class CursoController extends Controller
         return view('cursos.index', compact('cursos'));
     }
 
-    public function createCurso(){
+    public function create(){
         return view('cursos.create');
     }
 
@@ -52,9 +52,9 @@ class CursoController extends Controller
         return redirect()->route('curso.show', $curso);
     }
 
-    public function show($id){
+    public function show($curso){
 
-        $curso = Curso::find($id);
+        $curso = Curso::find($curso);
         /**
          * Para pasar variables a la vista se hace por un array 
          * ['nombreVariable_recibeLaVista'=>$nombreVariable_EstoyPasando]

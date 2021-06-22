@@ -8,7 +8,7 @@
     {{-- llamo por la ruta --}}
         {{-- <a href="curso/crear"> --}}
     {{-- llamo por el nombre --}}
-        <a href={{ route('curso.crear') }}>
+        <a href={{ route('curso.create') }}>
             Crear Curso
         </a>
     </h3>
