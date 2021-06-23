@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', HomeController::class);
+Route::get('/', HomeController::class)->name('home');
 // //   Metodo - url       controlador  -   Metodo Controlador - nombre Url
 // Route::get('curso', [CursoController::class, 'index'])->name('curso.index');
 
@@ -36,7 +36,7 @@ use Illuminate\Support\Facades\Route;
 // cambiar de url sin cambiar el nombre de rutas
 Route::resource('asignatura', CursoController::class)->parameters(['asignatura' => 'curso'])->names('curso');
 
-
+Route::view('nosotros', 'nosotros')->name('nosotros');
 
 // Route::get('curso/{lenguaje}/{so?}', function($lenguaje, $so = null) {
 //     if($so){

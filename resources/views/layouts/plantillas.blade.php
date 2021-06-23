@@ -7,16 +7,23 @@
     <title>@yield('title')</title>
     {{-- favicon --}}
     {{-- estilos --}}
+    <style>
+        .active {
+            color:red;
+            font-weigth: bold
+        }
+    </style>
     {{-- cdn talwin  --}}
     {{--  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">  --}}
 </head>
 <body>
     {{-- nav --}}
+        @include('layouts.partials.head')
     {{-- body --}}
-        
         @yield('contenido')
         
     {{-- footer --}}
+        @include('layouts.partials.footer')
     {{-- script --}}
 </body>
 </html>
