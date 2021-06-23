@@ -2,8 +2,12 @@
 
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\HomeController;
+use App\Mail\ContactanosMailable;
 use App\Models\Curso;
+use Illuminate\Routing\Route as RoutingRoute;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\Routing\Annotation\Route as AnnotationRoute;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +41,15 @@ Route::get('/', HomeController::class)->name('home');
 Route::resource('asignatura', CursoController::class)->parameters(['asignatura' => 'curso'])->names('curso');
 
 Route::view('nosotros', 'nosotros')->name('nosotros');
+
+
+Route::get('contactanos', function() {
+    $corre=new ContactanosMailable();
+
+    Mail::to('chedecime@gmail.com', '')->send($corre);
+
+    return 'correo enviado';
+});
 
 // Route::get('curso/{lenguaje}/{so?}', function($lenguaje, $so = null) {
 //     if($so){
