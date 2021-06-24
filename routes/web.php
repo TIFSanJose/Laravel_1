@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactanosController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\HomeController;
 use App\Mail\ContactanosMailable;
@@ -42,14 +43,10 @@ Route::resource('asignatura', CursoController::class)->parameters(['asignatura' 
 
 Route::view('nosotros', 'nosotros')->name('nosotros');
 
+Route::get('contactanos', [ContactanosController::class, 'index'])->name('contactanos.index');
 
-Route::get('contactanos', function() {
-    $corre=new ContactanosMailable();
+Route::post('contactanos', [ContactanosController::class, 'store'])->name('contactanos.store');
 
-    Mail::to('chedecime@gmail.com', '')->send($corre);
-
-    return 'correo enviado';
-});
 
 // Route::get('curso/{lenguaje}/{so?}', function($lenguaje, $so = null) {
 //     if($so){
