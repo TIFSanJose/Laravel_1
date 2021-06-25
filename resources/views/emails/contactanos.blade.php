@@ -13,5 +13,12 @@
 </head>
 <body>
     <h1>Gracias por Contactarnos</h1>
+
+    <p>De: <strong>{{ $contacto['correo'] }}</strong></p>
+    <br>
+    <p>Nombre: <strong>{{ $contacto['nombre'] }}</strong></p>
+    <br>
+    <p>Mensaje: <strong>{{ $contacto['mensaje'] }}</strong></p>
+
 </body>
 </html>

@@ -12,10 +12,10 @@ class ContactanosController extends Controller
         return view('contactanos.index');
     }
 
-    public function store(){
-        $corre=new ContactanosMailable();
+    public function store(Request $request){
+        $correo=new ContactanosMailable($request->all());
 
-        Mail::to('chedecime@gmail.com')->send($corre);
+        Mail::to('chedecime@gmail.com')->send($correo);
     
         return 'correo enviado';
     }
