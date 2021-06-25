@@ -13,6 +13,12 @@ class ContactanosController extends Controller
     }
 
     public function store(Request $request){
+        $request->validate([
+            'nombre' => 'required',
+            'correo' => 'required | email',
+            'mensaje' => 'required | min:2'
+        ]);
+
         $correo=new ContactanosMailable($request->all());
 
         Mail::to('chedecime@gmail.com')->send($correo);
