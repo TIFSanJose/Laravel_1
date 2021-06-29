@@ -55,3 +55,7 @@ Route::post('contactanos', [ContactanosController::class, 'store'])->name('conta
 //         return "bienvenido al curso de $lenguaje";
 //     }
 // });
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');

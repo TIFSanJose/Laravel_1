@@ -16,6 +16,7 @@ services:
         volumes:
             - '.:/var/www/html'
             - './.backups:/root'
+            - './.backups/bash.bashrc:/etc/bash.bashrc'
         networks:
             - sail
         depends_on:
