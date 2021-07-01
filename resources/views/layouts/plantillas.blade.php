@@ -30,29 +30,39 @@
 
     @php
         $color='blue';
+        $margin='mb-4';
     @endphp
     
     <div class="container">
-{{-- Instnaciando un componente color default rojo. ver clase asociada --}}
-        <x-alert/>
+        <x-alert2/>
 
-{{-- Pasando parametros al componente atributo='valor' --}}
-        <x-alert color='blue'/>
+        <x-alert2 color='red'/>
 
-{{-- Pasando parametros al componente por variable slot  --}}
-        <x-alert class="mb-4" color='green'>
-            Pasando parametros al componente por variable slot 
-        </x-alert>
+        <x-alert2 color='blue'>
+            soy el contenido de la variable slot
+        </x-alert2>
 
-{{-- Pasando parametros al componente por variable slot con nombre  --}}
-        <x-alert class="mb-4" color='yellow'>
-            <x-slot name='title'>
-                Pasando parametros al componente por variable slot con nombre
+        <x-alert2 class="mb-4">
+            ejemplo de merge atributos 'class' pasado por variable attributes
+        </x-alert2>
+
+        <x-alert2 :class="$margin" :color="$color">
+            ejemplo de merge atributos 'class' pasado por variable attributes. valores pasados desde una variable externa.
+        </x-alert2>
+
+        <x-alert2 color='green'>
+            <x-slot name='alerta'>
+                soy el contenido de la variable alerta
             </x-slot>
-        </x-alert>
+            soy el contenido de la variable slot
+        </x-alert2>
 
-{{-- Pasando parametros al componente atributo='valor' desde un valor externo  --}}
-        <x-alert :color='$color'/>
+        <x-alert2 color='gray'>
+            <x-slot name='alerta'>
+                soy el contenido de la variable alerta
+            </x-slot>
+            soy el contenido de la variable slot
+        </x-alert2>
 
 
     </div>
