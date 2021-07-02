@@ -56,6 +56,11 @@ Route::post('contactanos', [ContactanosController::class, 'store'])->name('conta
 //     }
 // });
 
+Route::get('/welcome', function() {
+    return view('welcome');
+})->name('welcome');
+
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');

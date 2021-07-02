@@ -13,6 +13,16 @@
             <li>
                 <a href={{ route('contactanos.index') }} class={{ request()->routeIs('contactanos.index') ? 'active' : '' }}>Contactanos</a>
             </li>
+            <li> JetStrema
+                <ul> 
+                    <li>
+                        <a href={{ route('dashboard') }} class={{ request()->routeIs('dashboard') ? 'active' : '' }}>JetStream</a>
+                    </li>
+                    <li>
+                        <a href={{ route('welcome') }} class={{ request()->routeIs('welcome') ? 'active' : '' }}>Welcome</a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </h3>
 </head>
