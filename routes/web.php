@@ -64,3 +64,13 @@ Route::get('/welcome', function() {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+
+Route::get('prueba', function() {
+    return view('welcome');
+})->middleware(['veredad', 'auth']);
+
+
+Route::get('no-autorizado', function() {
+    return auth()->user()->email;
+});
